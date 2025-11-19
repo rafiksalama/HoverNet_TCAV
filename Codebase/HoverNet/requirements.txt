@@ -1,10 +1,10 @@
 # Deep Learning Frameworks
 torch>=2.0.0
 torchvision>=0.15.0
-tensorflow>=2.13.0,<2.16.0
+tensorflow>=2.20.0
 
 # Scientific Computing
-numpy>=1.24.0,<2.0.0
+numpy>=1.24.0
 scipy>=1.10.0
 scikit-learn>=1.2.0
 pandas>=2.0.0
@@ -17,7 +17,7 @@ imageio>=2.28.0
 
 # Whole-Slide Imaging
 openslide-python>=1.2.0
-histolab>=0.6.0
+histolab>=0.5.0
 
 # Stain Normalization
 staintools>=2.1.2
