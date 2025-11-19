@@ -1,0 +1,138 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# PyCharm
+.idea/
+
+# VSCode
+.vscode/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+junit/
+*.cover
+.cache
+nosetests.xml
+coverage.xml
+
+# Mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Data directories (exclude large datasets)
+data/raw/**/*.svs
+data/raw/**/*.tif
+data/raw/**/*.tiff
+data/raw/**/*.ndpi
+data/raw/**/*.mrxs
+data/processed/**/*.h5
+data/processed/**/*.hdf5
+data/features/**/*.pt
+data/features/**/*.pth
+
+# Keep directory structure but ignore contents
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/features/*
+!data/features/.gitkeep
+data/concepts/*
+!data/concepts/.gitkeep
+
+# Models (large files)
+models/**/*.pth
+models/**/*.pt
+models/**/*.ckpt
+models/**/*.h5
+*.pth
+*.pt
+*.ckpt
+
+# Logs
+*.log
+logs/
+wandb/
+tensorboard/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# External cloned repositories
+hover_net/
+tcav/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Results
+results/**/*.png
+results/**/*.jpg
+results/**/*.pdf
+results/**/*.svg
+
+# Documentation builds
+docs/_build/
+docs/_static/
+docs/_templates/
+
+# Environment files (may contain secrets)
+.env
+.env.local
+.env.*.local
+
+# Downloaded pretrained models
+pretrained_models/
+pretrained/
+
+# Large downloaded datasets
+downloads/
+
+# Backup files
+*.bak
+*.backup
