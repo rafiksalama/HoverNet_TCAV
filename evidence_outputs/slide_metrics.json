@@ -1,0 +1,9 @@
+{
+  "lymphocyte_density": 0.1,
+  "tumor_cell_density": 0.5,
+  "stromal_density": 0.2,
+  "necrotic_density": 0.2,
+  "mean_nuclear_area": 321.9,
+  "std_nuclear_area": 105.31719285620515,
+  "mean_circularity": 0.8356171916086244
+}

@@ -1,0 +1,43 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.5, pytest-9.0.1, pluggy-1.6.0 -- /Users/rafik.salama/Codebase/HoverNet/venv/bin/python3.13
+cachedir: .pytest_cache
+benchmark: 5.2.3 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /Users/rafik.salama/Codebase/HoverNet
+configfile: pytest.ini
+plugins: benchmark-5.2.3, mock-3.15.1, cov-7.0.0
+collecting ... collected 22 items
+
+tests/unit/test_hovernet_segmentation.py::TestNucleiSegmentation::test_segment_single_tile PASSED [  4%]
+tests/unit/test_hovernet_segmentation.py::TestNucleiSegmentation::test_segment_tile_with_no_tissue PASSED [  9%]
+tests/unit/test_hovernet_segmentation.py::TestNucleiSegmentation::test_nuclei_instance_ids_unique PASSED [ 13%]
+tests/unit/test_hovernet_segmentation.py::TestNucleiSegmentation::test_nuclei_classification_types PASSED [ 18%]
+tests/unit/test_hovernet_segmentation.py::TestNucleiSegmentation::test_segment_different_tile_sizes[256] PASSED [ 22%]
+tests/unit/test_hovernet_segmentation.py::TestNucleiSegmentation::test_segment_different_tile_sizes[512] PASSED [ 27%]
+tests/unit/test_hovernet_segmentation.py::TestNucleiSegmentation::test_segment_different_tile_sizes[1024] PASSED [ 31%]
+tests/unit/test_hovernet_segmentation.py::TestFeatureExtraction::test_extract_morphological_features PASSED [ 36%]
+tests/unit/test_hovernet_segmentation.py::TestFeatureExtraction::test_feature_count_minimum PASSED [ 40%]
+tests/unit/test_hovernet_segmentation.py::TestFeatureExtraction::test_feature_values_valid_ranges PASSED [ 45%]
+tests/unit/test_hovernet_segmentation.py::TestFeatureExtraction::test_feature_extraction_handles_empty_mask PASSED [ 50%]
+tests/unit/test_hovernet_segmentation.py::TestSlideAggregation::test_compute_slide_level_features PASSED [ 54%]
+tests/unit/test_hovernet_segmentation.py::TestSlideAggregation::test_density_metrics_sum_to_one PASSED [ 59%]
+tests/unit/test_hovernet_segmentation.py::TestSlideAggregation::test_til_density_calculation PASSED [ 63%]
+tests/unit/test_hovernet_segmentation.py::TestStainNormalization::test_macenko_normalization_maintains_shape PASSED [ 68%]
+tests/unit/test_hovernet_segmentation.py::TestStainNormalization::test_normalized_image_within_valid_range PASSED [ 72%]
+tests/unit/test_hovernet_segmentation.py::TestStainNormalization::test_normalization_improves_consistency PASSED [ 77%]
+tests/unit/test_hovernet_segmentation.py::TestPerformance::test_segmentation_speed_benchmark PASSED [ 81%]
+tests/unit/test_hovernet_segmentation.py::TestPerformance::test_tile_processing_timeout PASSED [ 86%]
+tests/unit/test_hovernet_segmentation.py::TestErrorHandling::test_invalid_image_shape_raises_error PASSED [ 90%]
+tests/unit/test_hovernet_segmentation.py::TestErrorHandling::test_invalid_image_dtype_raises_error PASSED [ 95%]
+tests/unit/test_hovernet_segmentation.py::TestErrorHandling::test_corrupted_image_handled_gracefully PASSED [100%]
+
+
+---------------------------------------------------- benchmark: 1 tests ----------------------------------------------------
+Name (time in ms)                        Min     Max    Mean  StdDev  Median     IQR  Outliers       OPS  Rounds  Iterations
+----------------------------------------------------------------------------------------------------------------------------
+test_segmentation_speed_benchmark     2.1595  3.2415  2.2849  0.1436  2.2193  0.1578     56;18  437.6561     357           1
+----------------------------------------------------------------------------------------------------------------------------
+
+Legend:
+  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.
+  OPS: Operations Per Second, computed as 1 / Mean
+============================== 22 passed in 2.53s ==============================
