@@ -268,8 +268,8 @@
 
         /* ===== EMG Anatomical View ===== */
         .muscle-region {
-            fill: rgba(0,170,255,0.25);
-            stroke: rgba(0,170,255,0.8);
+            fill: rgba(0, 170, 255, 0.25);
+            stroke: rgba(0, 170, 255, 0.8);
             stroke-width: 2;
             cursor: pointer;
             transition: fill 0.25s, stroke 0.25s;
@@ -277,25 +277,98 @@
             transform-origin: center;
             will-change: transform, fill, stroke-width;
         }
-        .muscle-region.posterior { stroke-dasharray: 4 3; }
-        .muscle-region.active { fill: rgba(0,255,140,0.35); stroke: rgba(0,255,140,0.9); }
-        .muscle-region:hover { fill: rgba(255,200,0,0.45); stroke: rgba(255,200,0,0.9); }
-        .muscle-region.pulse-active { animation: pulseMuscle 1.1s infinite ease-in-out; }
-        @keyframes pulseMuscle {
-            0% { transform: scale(1); stroke-width:2; fill: rgba(0,170,255,0.25); }
-            50% { transform: scale(1.10); stroke-width:4; fill: rgba(0,255,180,0.65); }
-            100% { transform: scale(1); stroke-width:2; fill: rgba(0,170,255,0.25); }
+
+        .muscle-region.posterior {
+            stroke-dasharray: 4 3;
         }
+
+        .muscle-region.active {
+            fill: rgba(0, 255, 140, 0.35);
+            stroke: rgba(0, 255, 140, 0.9);
+        }
+
+        .muscle-region:hover {
+            fill: rgba(255, 200, 0, 0.45);
+            stroke: rgba(255, 200, 0, 0.9);
+        }
+
+        .muscle-region.pulse-active {
+            animation: pulseMuscle 1.1s infinite ease-in-out;
+        }
+
+        @keyframes pulseMuscle {
+            0% {
+                transform: scale(1);
+                stroke-width: 2;
+                fill: rgba(0, 170, 255, 0.25);
+            }
+
+            50% {
+                transform: scale(1.10);
+                stroke-width: 4;
+                fill: rgba(0, 255, 180, 0.65);
+            }
+
+            100% {
+                transform: scale(1);
+                stroke-width: 2;
+                fill: rgba(0, 170, 255, 0.25);
+            }
+        }
+
         /* Image hotspots */
-        .anatomy-wrapper { position: relative; width:100%; height:420px; }
-        .muscles-image { width:100%; height:100%; object-fit:contain; user-select:none; }
-        .muscle-hotspot { position:absolute; border:2px solid rgba(0,170,255,0.6); border-radius:8px; cursor:pointer; background:rgba(0,170,255,0.15); backdrop-filter: blur(2px); transition: all .25s; }
-        .muscle-hotspot.posterior { border-style:dashed; }
-        .muscle-hotspot:hover { background:rgba(255,200,0,0.45); border-color:rgba(255,200,0,0.9); }
-        .muscle-hotspot.active { background:rgba(0,255,140,0.35); border-color:rgba(0,255,140,0.9); }
-        .muscle-hotspot.pulse-active { animation:pulseMuscle 1.2s infinite; }
-        .muscle-map-layer { position:absolute; top:0; left:0; z-index:10; pointer-events:none; }
-        .muscle-map-layer .muscle-region { pointer-events:auto; }
+        .anatomy-wrapper {
+            position: relative;
+            width: 100%;
+            height: 420px;
+        }
+
+        .muscles-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            user-select: none;
+        }
+
+        .muscle-hotspot {
+            position: absolute;
+            border: 2px solid rgba(0, 170, 255, 0.6);
+            border-radius: 8px;
+            cursor: pointer;
+            background: rgba(0, 170, 255, 0.15);
+            backdrop-filter: blur(2px);
+            transition: all .25s;
+        }
+
+        .muscle-hotspot.posterior {
+            border-style: dashed;
+        }
+
+        .muscle-hotspot:hover {
+            background: rgba(255, 200, 0, 0.45);
+            border-color: rgba(255, 200, 0, 0.9);
+        }
+
+        .muscle-hotspot.active {
+            background: rgba(0, 255, 140, 0.35);
+            border-color: rgba(0, 255, 140, 0.9);
+        }
+
+        .muscle-hotspot.pulse-active {
+            animation: pulseMuscle 1.2s infinite;
+        }
+
+        .muscle-map-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .muscle-map-layer .muscle-region {
+            pointer-events: auto;
+        }
 
         .channel-card {
             background: var(--bg-card);
@@ -2426,7 +2499,8 @@
                     id="mode-indicator">MANUAL MODE</span>
                 <div class="mode-switch-buttons" style="margin-left: 15px; display: flex; gap: 5px;">
                     <button class="mode-btn active" onclick="switchToMode('manual', this)">⚙️ Manual</button>
-                    <button id="template-mode-btn" class="mode-btn" onclick="switchToMode('template', this)">📋 Template</button>
+                    <button id="template-mode-btn" class="mode-btn" onclick="switchToMode('template', this)">📋
+                        Template</button>
                 </div>
                 <div id="mode-debug" style="margin-left:10px;font-size:11px;color:var(--text-secondary);"></div>
                 <span style="margin-left: 20px; font-weight: 600; color: var(--text-primary);"
@@ -2440,7 +2514,7 @@
                     onclick="exportChannelUsageCSV()">⬇ Export Usage CSV</button>
                 <span>⏱ <strong id="timer">00:00</strong></span>
                 <span style="margin-left: 10px; color: var(--text-secondary);">Remaining: <strong
-                    id="time-remaining">10:00</strong></span>
+                        id="time-remaining">10:00</strong></span>
             </div>
             <div id="template-selector-container" style="display: none;">
                 <span style="margin-right: 10px; font-weight: 600; color: var(--text-primary);">Select Template:</span>
@@ -2823,8 +2897,10 @@
                     </div>
                 </div>
 
-                <button id="start-template-btn" class="start-template-btn" onclick="startTemplate()" disabled>Start Template</button>
-                <div id="template-debug-status" style="margin-top:8px;font-size:12px;color:var(--text-secondary);"></div>
+                <button id="start-template-btn" class="start-template-btn" onclick="startTemplate()" disabled>Start
+                    Template</button>
+                <div id="template-debug-status" style="margin-top:8px;font-size:12px;color:var(--text-secondary);">
+                </div>
             </div>
         </div>
 
@@ -2851,82 +2927,120 @@
         </div>
     </div>
 
-        <!-- SCREEN: EMG MONITOR (Anatomical View) -->
-        <div id="screen-emg" class="screen">
-            <div style="display:flex;gap:30px;padding:20px;height:100%;box-sizing:border-box;">
-                <!-- Anatomical SVG -->
-                <div style="flex:0 0 420px;background:var(--bg-card);padding:15px;border-radius:10px;box-shadow:var(--shadow);position:relative;">
-                    <h2 style="margin:0 0 10px 0;font-size:20px;">🧍 Muscle Activation</h2>
-                    <div class="anatomy-wrapper">
-                        <img src="muscles.jpg" alt="Human Muscles" class="muscles-image" draggable="false" />
-                        <svg id="muscle-map-front" class="muscle-map-layer" style="left:0;width:50%;height:100%;"></svg>
-                        <svg id="muscle-map-back" class="muscle-map-layer" style="left:50%;width:50%;height:100%;"></svg>
-                    </div>
-                    <div style="font-size:12px;color:var(--text-secondary);">Click a highlighted muscle to view its EMG-like signal.</div>
+    <!-- SCREEN: EMG MONITOR (Anatomical View) -->
+    <div id="screen-emg" class="screen">
+        <div style="display:flex;gap:30px;padding:20px;height:100%;box-sizing:border-box;">
+            <!-- Anatomical SVG -->
+            <div
+                style="flex:0 0 420px;background:var(--bg-card);padding:15px;border-radius:10px;box-shadow:var(--shadow);position:relative;">
+                <h2 style="margin:0 0 10px 0;font-size:20px;">🧍 Muscle Activation</h2>
+                <div class="anatomy-wrapper">
+                    <img src="muscles.jpg" alt="Human Muscles" class="muscles-image" draggable="false" />
+                    <svg id="muscle-map-front" class="muscle-map-layer" style="left:0;width:50%;height:100%;"></svg>
+                    <svg id="muscle-map-back" class="muscle-map-layer" style="left:50%;width:50%;height:100%;"></svg>
                 </div>
-                <!-- Waveform Panel -->
-                <div style="flex:1 1 auto;display:flex;flex-direction:column;gap:15px;">
-                    <div style="background:var(--bg-card);padding:15px;border-radius:10px;box-shadow:var(--shadow);">
-                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                            <h2 id="emg-active-title" style="margin:0;font-size:20px;">Select a Muscle</h2>
-                            <span id="emg-active-amplitude" style="font-size:14px;color:var(--color-blue);">Amplitude: 0.0 mV</span>
-                        </div>
-                        <canvas id="emg-single-canvas" width="800" height="220" style="width:100%;height:220px;background:#101010;border:1px solid #222;border-radius:6px;"></canvas>
+                <div style="font-size:12px;color:var(--text-secondary);">Click a highlighted muscle to view its EMG-like
+                    signal.</div>
+            </div>
+            <!-- Waveform Panel -->
+            <div style="flex:1 1 auto;display:flex;flex-direction:column;gap:15px;">
+                <div style="background:var(--bg-card);padding:15px;border-radius:10px;box-shadow:var(--shadow);">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                        <h2 id="emg-active-title" style="margin:0;font-size:20px;">Select a Muscle</h2>
+                        <span id="emg-active-amplitude" style="font-size:14px;color:var(--color-blue);">Amplitude: 0.0
+                            mV</span>
                     </div>
-                    <div style="background:var(--bg-card);padding:15px;border-radius:10px;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;font-size:13px;">
-                        <div><strong>Channel Intensity:</strong> <span id="emg-active-intensity">0%</span></div>
-                        <div><strong>Live Frequency:</strong> <span id="emg-active-frequency">0 Hz</span></div>
-                        <div><strong>Peak (Session):</strong> <span id="emg-peak-session">0.0 mV</span></div>
-                        <div><strong>Average (Window):</strong> <span id="emg-avg-window">0.0 mV</span></div>
-                    </div>
+                    <canvas id="emg-single-canvas" width="800" height="220"
+                        style="width:100%;height:220px;background:#101010;border:1px solid #222;border-radius:6px;"></canvas>
+                </div>
+                <div
+                    style="background:var(--bg-card);padding:15px;border-radius:10px;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;font-size:13px;">
+                    <div><strong>Channel Intensity:</strong> <span id="emg-active-intensity">0%</span></div>
+                    <div><strong>Live Frequency:</strong> <span id="emg-active-frequency">0 Hz</span></div>
+                    <div><strong>Peak (Session):</strong> <span id="emg-peak-session">0.0 mV</span></div>
+                    <div><strong>Average (Window):</strong> <span id="emg-avg-window">0.0 mV</span></div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- SETTINGS MODAL (moved off main screen) -->
-        <div id="modal-settings" class="modal-overlay">
-            <div class="modal-content large">
-                <button class="modal-close" onclick="closeModal('settings')">×</button>
-                <div class="modal-title">⚙️ Device & App Settings</div>
+    <!-- SETTINGS MODAL (moved off main screen) -->
+    <div id="modal-settings" class="modal-overlay">
+        <div class="modal-content large">
+            <button class="modal-close" onclick="closeModal('settings')">×</button>
+            <div class="modal-title">⚙️ Device & App Settings</div>
 
-                <div class="settings-section">
-                    <div class="settings-section-title">Device</div>
-                    <div class="setting-row"><span class="setting-label">Device ID</span><span class="setting-value">AX_to</span></div>
-                    <div class="setting-row"><span class="setting-label">Firmware Version</span><span class="setting-value">v2.1.4</span></div>
-                    <div class="setting-row"><span class="setting-label">Battery Saver Mode</span>
-                        <div class="toggle-switch" onclick="toggleSwitch(this)"><div class="toggle-labels"><span>Off</span><span>On</span></div><div class="toggle-slider"></div></div>
+            <div class="settings-section">
+                <div class="settings-section-title">Appearance</div>
+                <div class="setting-row"><span class="setting-label">Dark Mode</span>
+                    <div class="toggle-switch" id="dark-mode-toggle" onclick="toggleDarkMode(this)">
+                        <div class="toggle-labels"><span>Off</span><span>On</span></div>
+                        <div class="toggle-slider"></div>
                     </div>
-                    <div class="setting-row"><span class="setting-label">Auto-Lock (min)</span><span class="setting-value">5</span></div>
                 </div>
+            </div>
 
-                <div class="settings-section">
-                    <div class="settings-section-title">Network</div>
-                    <div class="setting-row"><span class="setting-label">Mesh Network Setup</span><button class="settings-btn" onclick="openNetworkSetup()">Configure</button></div>
-                    <div class="setting-row"><span class="setting-label">Bluetooth</span>
-                        <div class="toggle-switch active" onclick="toggleSwitch(this)"><div class="toggle-labels"><span>Off</span><span>On</span></div><div class="toggle-slider"></div></div>
+            <div class="settings-section">
+                <div class="settings-section-title">Device</div>
+                <div class="setting-row"><span class="setting-label">Device ID</span><span
+                        class="setting-value">AX_to</span></div>
+                <div class="setting-row"><span class="setting-label">Firmware Version</span><span
+                        class="setting-value">v2.1.4</span></div>
+                <div class="setting-row"><span class="setting-label">Battery Saver Mode</span>
+                    <div class="toggle-switch" onclick="toggleSwitch(this)">
+                        <div class="toggle-labels"><span>Off</span><span>On</span></div>
+                        <div class="toggle-slider"></div>
                     </div>
-                    <div class="setting-row"><span class="setting-label">WiFi Status</span><span class="setting-value" style="color: var(--color-green-status);">Connected</span></div>
                 </div>
+                <div class="setting-row"><span class="setting-label">Auto-Lock (min)</span><span
+                        class="setting-value">5</span></div>
+            </div>
 
-                <div class="settings-section">
-                    <div class="settings-section-title">Help & About</div>
-                    <div class="setting-row"><span class="setting-label">User Guide</span><button class="settings-btn secondary" onclick="openUserGuide()">START ▶</button></div>
-                    <div class="setting-row"><span class="setting-label">Tutorial</span><button class="settings-btn secondary" onclick="openTutorial()">Watch</button></div>
-                    <div class="setting-row"><span class="setting-label">Support</span><button class="settings-btn secondary">Contact</button></div>
-                    <div class="setting-row"><span class="setting-label">About NEURO PRO 2</span><button class="settings-btn secondary">Info</button></div>
-                </div>
-
-                <div class="settings-section">
-                    <div class="settings-section-title">Data & Privacy</div>
-                    <div class="setting-row"><span class="setting-label">Data Sync</span>
-                        <div class="toggle-switch active" onclick="toggleSwitch(this)"><div class="toggle-labels"><span>Off</span><span>On</span></div><div class="toggle-slider"></div></div>
+            <div class="settings-section">
+                <div class="settings-section-title">Network</div>
+                <div class="setting-row"><span class="setting-label">Mesh Network Setup</span><button
+                        class="settings-btn" onclick="openNetworkSetup()">Configure</button></div>
+                <div class="setting-row"><span class="setting-label">Bluetooth</span>
+                    <div class="toggle-switch active" onclick="toggleSwitch(this)">
+                        <div class="toggle-labels"><span>Off</span><span>On</span></div>
+                        <div class="toggle-slider"></div>
                     </div>
-                    <div class="setting-row"><span class="setting-label">Export Session Data</span><button class="settings-btn secondary">Export</button></div>
-                    <div class="setting-row"><span class="setting-label">Clear Cache</span><button class="settings-btn secondary">Clear</button></div>
-                    <div class="setting-row"><span class="setting-label">Factory Reset</span><button class="settings-btn secondary" style="color: var(--color-red-status); border-color: var(--color-red-status);">Reset</button></div>
+                </div>
+                <div class="setting-row"><span class="setting-label">WiFi Status</span><span class="setting-value"
+                        style="color: var(--color-green-status);">Connected</span></div>
+            </div>
+
+            <div class="settings-section">
+                <div class="settings-section-title">Help & About</div>
+                <div class="setting-row"><span class="setting-label">User Guide</span><button
+                        class="settings-btn secondary" onclick="openUserGuide()">START ▶</button></div>
+                <div class="setting-row"><span class="setting-label">Tutorial</span><button
+                        class="settings-btn secondary" onclick="openTutorial()">Watch</button></div>
+                <div class="setting-row"><span class="setting-label">Support</span><button
+                        class="settings-btn secondary">Contact</button></div>
+                <div class="setting-row"><span class="setting-label">About NEURO PRO 2</span><button
+                        class="settings-btn secondary">Info</button></div>
+            </div>
+
+            <div class="settings-section">
+                <div class="settings-section-title">Data & Privacy</div>
+                <div class="setting-row"><span class="setting-label">Data Sync</span>
+                    <div class="toggle-switch active" onclick="toggleSwitch(this)">
+                        <div class="toggle-labels"><span>Off</span><span>On</span></div>
+                        <div class="toggle-slider"></div>
+                    </div>
+                </div>
+                <div class="setting-row"><span class="setting-label">Export Session Data</span><button
+                        class="settings-btn secondary">Export</button></div>
+                <div class="setting-row"><span class="setting-label">Clear Cache</span><button
+                        class="settings-btn secondary">Clear</button></div>
+                <div class="setting-row"><span class="setting-label">Factory Reset</span><button
+                        class="settings-btn secondary"
+                        style="color: var(--color-red-status); border-color: var(--color-red-status);">Reset</button>
                 </div>
             </div>
         </div>
+    </div>
 
     <!-- NETWORK SETUP MODAL (Full Screen) -->
     <div id="modal-network" class="modal-overlay">
@@ -3912,11 +4026,11 @@
         let contractionCount = 0;
         let sessionActive = false;
 
-            // Stop EMG visualization
-            if (emgAnimationFrame) {
-                cancelAnimationFrame(emgAnimationFrame);
-                emgAnimationFrame = null;
-            }
+        // Stop EMG visualization
+        if (emgAnimationFrame) {
+            cancelAnimationFrame(emgAnimationFrame);
+            emgAnimationFrame = null;
+        }
         let sessionInterval = null;
         let sessionDuration = 10 * 60; // 10 minutes in seconds (configurable)
         var selectedTemplate = null; // moved to var to avoid TDZ issues
@@ -4078,7 +4192,7 @@
         var emgPeakSession = 0;
 
         function switchToMode(mode, buttonEl) {
-            try { console.log('[Mode] switchToMode called with', mode); } catch(_){}
+            try { console.log('[Mode] switchToMode called with', mode); } catch (_) { }
             currentMode = mode;
 
             // Update active button
@@ -4134,7 +4248,7 @@
                 const target = document.getElementById('screen-templates');
                 if (target) {
                     // Normal navigation; rely on .screen/.active CSS
-                    try { switchScreen('templates', null); } catch(e) { console.error('[Mode] switchScreen threw', e); }
+                    try { switchScreen('templates', null); } catch (e) { console.error('[Mode] switchScreen threw', e); }
                     target.style.outline = '';
                     target.style.outlineOffset = '';
                     target.style.display = ''; // reset any forced inline style
@@ -4813,6 +4927,14 @@
                     console.warn('Failed to load saved parameters:', e);
                 }
             }
+
+            // Load dark mode preference
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+                const darkModeToggle = document.getElementById('dark-mode-toggle');
+                if (darkModeToggle) darkModeToggle.classList.add('active');
+            }
         });
 
         // Close modals on click outside
@@ -5019,7 +5141,7 @@
             // Auto-assign a starter intensity if none set so EMG shows activity
             if (channel.intensity === 0) {
                 channel.intensity = 30; // default baseline
-                const valEl = document.getElementById('ch'+ch+'-value');
+                const valEl = document.getElementById('ch' + ch + '-value');
                 if (valEl) valEl.textContent = channel.intensity;
                 updateActiveHighlights();
                 updateMuscleHighlight(ch);
@@ -5065,17 +5187,17 @@
             const ctx = canvas.getContext('2d');
             const w = canvas.width; const h = canvas.height;
             ctx.fillStyle = '#101010';
-            ctx.fillRect(0,0,w,h);
+            ctx.fillRect(0, 0, w, h);
             ctx.strokeStyle = '#222';
             ctx.lineWidth = 1;
-            ctx.beginPath(); ctx.moveTo(0,h/2); ctx.lineTo(w,h/2); ctx.stroke();
-            const grad = ctx.createLinearGradient(0,0,0,h);
-            grad.addColorStop(0,'#00ffaa'); grad.addColorStop(0.5,'#00aaff'); grad.addColorStop(1,'#0066ff');
+            ctx.beginPath(); ctx.moveTo(0, h / 2); ctx.lineTo(w, h / 2); ctx.stroke();
+            const grad = ctx.createLinearGradient(0, 0, 0, h);
+            grad.addColorStop(0, '#00ffaa'); grad.addColorStop(0.5, '#00aaff'); grad.addColorStop(1, '#0066ff');
             ctx.strokeStyle = grad; ctx.lineWidth = 2; ctx.beginPath();
-            emgSingleData.forEach((val,i)=>{
+            emgSingleData.forEach((val, i) => {
                 const x = (i / emgSingleData.length) * w;
-                const y = h/2 - (val/3) * h * 0.8;
-                if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+                const y = h / 2 - (val / 3) * h * 0.8;
+                if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
             });
             ctx.stroke();
         }
@@ -5093,7 +5215,7 @@
             if (ampEl) ampEl.textContent = 'Amplitude: ' + Math.abs(val).toFixed(2) + ' mV';
             if (peakEl) peakEl.textContent = emgPeakSession.toFixed(2) + ' mV';
             if (avgEl) {
-                const avg = emgSingleData.slice(-200).reduce((a,b)=>a+Math.abs(b),0)/(Math.min(200, emgSingleData.length)||1);
+                const avg = emgSingleData.slice(-200).reduce((a, b) => a + Math.abs(b), 0) / (Math.min(200, emgSingleData.length) || 1);
                 avgEl.textContent = avg.toFixed(2) + ' mV';
             }
             drawSingleEMG();
@@ -5112,66 +5234,66 @@
             if (!el) return;
             const channel = channels[ch - 1];
             if (channel.intensity > 0) {
-                el.classList.add('pulse-active','active');
+                el.classList.add('pulse-active', 'active');
             } else {
-                el.classList.remove('pulse-active','active');
+                el.classList.remove('pulse-active', 'active');
             }
         }
 
-                // SVG muscle map configuration (approximate polygons in percent of half figure width/height)
-                const MUSCLE_MAP_FRONT = [
-                    { channel:1, label:'Left Quadriceps', points:[[34,38],[45,38],[45,53],[34,53]] },
-                    { channel:3, label:'Right Quadriceps', points:[[49,38],[60,38],[60,53],[49,53]] },
-                    { channel:2, label:'Left Glute-Ham', points:[[32,53],[44,53],[44,69],[32,69]], posterior:true },
-                    { channel:4, label:'Right Glute-Ham', points:[[49,53],[61,53],[61,69],[49,69]], posterior:true },
-                    { channel:5, label:'Left Dorsiflexors', points:[[39,66],[47,66],[47,84],[39,84]] },
-                    { channel:7, label:'Right Dorsiflexors', points:[[53,66],[61,66],[61,84],[53,84]] },
-                    { channel:6, label:'Left Plantar Flexors', points:[[41,83],[48,83],[48,93],[41,93]], posterior:true },
-                    { channel:8, label:'Right Plantar Flexors', points:[[54,83],[61,83],[61,93],[54,93]], posterior:true }
-                ];
-                const MUSCLE_MAP_BACK = [
-                    { channel:2, label:'Left Hamstring', points:[[10,53],[22,53],[22,69],[10,69]], posterior:true },
-                    { channel:4, label:'Right Hamstring', points:[[28,53],[40,53],[40,69],[28,69]], posterior:true },
-                    { channel:6, label:'Left Calf', points:[[12,75],[20,75],[20,92],[12,92]], posterior:true },
-                    { channel:8, label:'Right Calf', points:[[30,75],[38,75],[38,92],[30,92]], posterior:true }
-                ];
-                function buildMuscleMap(svgId, config){
-                    const svg = document.getElementById(svgId);
-                    const img = document.querySelector('.muscles-image');
-                    const wrapper = document.querySelector('.anatomy-wrapper');
-                    if(!svg || !img || !wrapper) return;
-                    const fullW = img.clientWidth || wrapper.clientWidth;
-                    const fullH = img.clientHeight || wrapper.clientHeight;
-                    if(!fullW || !fullH){ setTimeout(()=>buildMuscleMap(svgId,config),100); return; }
-                    const halfW = fullW / 2;
-                    svg.setAttribute('viewBox', `0 0 ${halfW} ${fullH}`);
-                    svg.innerHTML = '';
-                    config.forEach(m => {
-                        const poly = document.createElementNS('http://www.w3.org/2000/svg','polygon');
-                        const pts = m.points.map(([xp,yp]) => `${xp/100*halfW},${yp/100*fullH}`).join(' ');
-                        poly.setAttribute('points', pts);
-                        poly.id = 'muscle-ch'+m.channel;
-                        poly.classList.add('muscle-region');
-                        if (m.posterior) poly.classList.add('posterior');
-                        poly.dataset.channel = m.channel;
-                        poly.dataset.label = m.label;
-                        svg.appendChild(poly);
-                    });
-                }
-                function initMuscleMaps(){ buildMuscleMap('muscle-map-front', MUSCLE_MAP_FRONT); buildMuscleMap('muscle-map-back', MUSCLE_MAP_BACK); }
-                document.addEventListener('DOMContentLoaded', initMuscleMaps);
-                window.addEventListener('resize', initMuscleMaps);
-                const musclesImg = document.querySelector('.muscles-image');
-                if(musclesImg) musclesImg.addEventListener('load', initMuscleMaps);
-                // Debug helper to force all channels active & visualize pulse
-                // Removed debugPulseAll helper (was used for testing animation)
+        // SVG muscle map configuration (approximate polygons in percent of half figure width/height)
+        const MUSCLE_MAP_FRONT = [
+            { channel: 1, label: 'Left Quadriceps', points: [[34, 38], [45, 38], [45, 53], [34, 53]] },
+            { channel: 3, label: 'Right Quadriceps', points: [[49, 38], [60, 38], [60, 53], [49, 53]] },
+            { channel: 2, label: 'Left Glute-Ham', points: [[32, 53], [44, 53], [44, 69], [32, 69]], posterior: true },
+            { channel: 4, label: 'Right Glute-Ham', points: [[49, 53], [61, 53], [61, 69], [49, 69]], posterior: true },
+            { channel: 5, label: 'Left Dorsiflexors', points: [[39, 66], [47, 66], [47, 84], [39, 84]] },
+            { channel: 7, label: 'Right Dorsiflexors', points: [[53, 66], [61, 66], [61, 84], [53, 84]] },
+            { channel: 6, label: 'Left Plantar Flexors', points: [[41, 83], [48, 83], [48, 93], [41, 93]], posterior: true },
+            { channel: 8, label: 'Right Plantar Flexors', points: [[54, 83], [61, 83], [61, 93], [54, 93]], posterior: true }
+        ];
+        const MUSCLE_MAP_BACK = [
+            { channel: 2, label: 'Left Hamstring', points: [[10, 53], [22, 53], [22, 69], [10, 69]], posterior: true },
+            { channel: 4, label: 'Right Hamstring', points: [[28, 53], [40, 53], [40, 69], [28, 69]], posterior: true },
+            { channel: 6, label: 'Left Calf', points: [[12, 75], [20, 75], [20, 92], [12, 92]], posterior: true },
+            { channel: 8, label: 'Right Calf', points: [[30, 75], [38, 75], [38, 92], [30, 92]], posterior: true }
+        ];
+        function buildMuscleMap(svgId, config) {
+            const svg = document.getElementById(svgId);
+            const img = document.querySelector('.muscles-image');
+            const wrapper = document.querySelector('.anatomy-wrapper');
+            if (!svg || !img || !wrapper) return;
+            const fullW = img.clientWidth || wrapper.clientWidth;
+            const fullH = img.clientHeight || wrapper.clientHeight;
+            if (!fullW || !fullH) { setTimeout(() => buildMuscleMap(svgId, config), 100); return; }
+            const halfW = fullW / 2;
+            svg.setAttribute('viewBox', `0 0 ${halfW} ${fullH}`);
+            svg.innerHTML = '';
+            config.forEach(m => {
+                const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+                const pts = m.points.map(([xp, yp]) => `${xp / 100 * halfW},${yp / 100 * fullH}`).join(' ');
+                poly.setAttribute('points', pts);
+                poly.id = 'muscle-ch' + m.channel;
+                poly.classList.add('muscle-region');
+                if (m.posterior) poly.classList.add('posterior');
+                poly.dataset.channel = m.channel;
+                poly.dataset.label = m.label;
+                svg.appendChild(poly);
+            });
+        }
+        function initMuscleMaps() { buildMuscleMap('muscle-map-front', MUSCLE_MAP_FRONT); buildMuscleMap('muscle-map-back', MUSCLE_MAP_BACK); }
+        document.addEventListener('DOMContentLoaded', initMuscleMaps);
+        window.addEventListener('resize', initMuscleMaps);
+        const musclesImg = document.querySelector('.muscles-image');
+        if (musclesImg) musclesImg.addEventListener('load', initMuscleMaps);
+        // Debug helper to force all channels active & visualize pulse
+        // Removed debugPulseAll helper (was used for testing animation)
 
         // Hook anatomical regions
         document.addEventListener('DOMContentLoaded', () => {
             function bindTargets(selector) {
                 document.querySelectorAll(selector).forEach(el => {
                     el.addEventListener('click', () => {
-                        document.querySelectorAll(selector).forEach(r=>r.classList.remove('active'));
+                        document.querySelectorAll(selector).forEach(r => r.classList.remove('active'));
                         el.classList.add('active');
                         const ch = parseInt(el.getAttribute('data-channel'));
                         selectMuscleChannel(ch);
