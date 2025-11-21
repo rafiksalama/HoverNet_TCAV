@@ -1,0 +1,55 @@
+COMPLETE FIX FOR SESSION START - Replace function startSession() starting at line 4362:
+
+        function startSession() {
+            if (sessionActive) return;
+
+            // Check if at least one channel is active before starting
+            const hasActiveChannel = channels.some(c => c.intensity > 0);
+            if (!hasActiveChannel) {
+                alert('⚠️ Please activate at least one channel before starting the session.\n\nUse the + button to increase channel intensity.');
+                return;
+            }
+
+            sessionActive = true;
+            const startBtn = document.getElementById('start-session-btn');
+            if (startBtn) {
+                startBtn.textContent = '⏸ PAUSE';
+                startBtn.classList.add('active');
+            }
+
+            // Start timer interval
+            sessionInterval = setInterval(() => {
+                sessionTime++;
+                updateTimerDisplay();
+
+                // Contractions: based on configured interval, count one per active channel
+                const interval = sessionParams.contractionIntervalSec || 2;
+                if (sessionTime % interval === 0) {
+                    const activeCount = channels.filter(c => c.intensity > 0).length;
+                    if (activeCount > 0) {
+                        contractionCount += activeCount;
+                        const ccEl = document.getElementById('contraction-count');
+                        if (ccEl) ccEl.textContent = contractionCount;
+                    }
+                }
+
+                // Accumulate active seconds per channel and update progress bars
+                channels.forEach((ch, idx) => {
+                    if (ch.intensity > 0) channelActiveSeconds[idx]++;
+                });
+                if (channels.some(c => c.intensity > 0)) anyActiveSeconds++;
+                updateChannelProgress();
+                updateActiveSummary();
+
+                // Check if session duration reached
+                if (sessionTime >= sessionDuration) {
+                    stopSession();
+                    alert('Session duration completed!');
+                }
+            }, 1000);
+        }
+
+KEY CHANGES:
+1. Added check: const hasActiveChannel = channels.some(c => c.intensity > 0);
+2. If no active channels, show alert and return early (don't start session)
+3. Alert message clearly tells user to activate at least one channel

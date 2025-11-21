@@ -1,0 +1,33 @@
+Replace lines 4373-4400 in Demo.html with:
+
+            sessionInterval = setInterval(() => {
+                // Only increment time if at least one channel is active
+                const hasActiveChannel = channels.some(c => c.intensity > 0);
+                
+                if (hasActiveChannel) {
+                    sessionTime++;
+                    updateTimerDisplay();
+                }
+
+                // Contractions: based on configured interval, count one per active channel
+                const interval = sessionParams.contractionIntervalSec || 2;
+                if (hasActiveChannel && sessionTime % interval === 0) {
+                    const activeCount = channels.filter(c => c.intensity > 0).length;
+                    contractionCount += activeCount;
+                    const ccEl = document.getElementById('contraction-count');
+                    if (ccEl) ccEl.textContent = contractionCount;
+                }
+
+                // Accumulate active seconds per channel and update progress bars
+                channels.forEach((ch, idx) => {
+                    if (ch.intensity > 0) channelActiveSeconds[idx]++;
+                });
+                if (hasActiveChannel) anyActiveSeconds++;
+                updateChannelProgress();
+                updateActiveSummary();
+
+                // Check if session duration reached
+                if (sessionTime >= sessionDuration) {
+                    stopSession();
+                    alert('Session duration completed!');
+                }

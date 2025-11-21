@@ -1,0 +1,305 @@
+<!-- CSS to add after .bar-label -->
+<style>
+    .bar-value {
+        position: absolute;
+        top: -25px;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--text-primary);
+        opacity: 0.8;
+    }
+
+    .bar-wrapper {
+        position: relative;
+    }
+
+    .stats-cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .stat-card {
+        background: var(--bg-card);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-align: center;
+        transition: transform 0.2s;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .stat-icon {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .stat-value {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--color-blue);
+        margin-bottom: 5px;
+    }
+
+    .stat-label {
+        font-size: 12px;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .activity-breakdown {
+        margin-top: 30px;
+        background: var(--bg-card);
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+    }
+
+    .activity-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .activity-stat-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .activity-stat-bar {
+        flex: 2;
+        height: 24px;
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .activity-stat-fill {
+        height: 100%;
+        border-radius: 12px;
+        transition: width 0.5s ease;
+    }
+
+    .activity-stat-info {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+    }
+
+    .activity-stat-name {
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+
+    .activity-stat-value {
+        color: var(--text-secondary);
+        font-weight: 500;
+    }
+</style>
+
+<!-- HTML structure for enhanced usage screen -->
+<div id="screen-usage" class="screen">
+    <div class="usage-container">
+        <!-- Stats Summary Cards -->
+        <div class="stats-cards">
+            <div class="stat-card">
+                <div class="stat-icon">⏱</div>
+                <div class="stat-value">18.5</div>
+                <div class="stat-label">Hours This Week</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔥</div>
+                <div class="stat-value">127</div>
+                <div class="stat-label">Sessions Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-value">+23%</div>
+                <div class="stat-label">vs Last Week</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-value">8,450</div>
+                <div class="stat-label">Total Contractions</div>
+            </div>
+        </div>
+
+        <div class="chart-header">
+            <div class="date-navigation">
+                <span class="nav-arrow" onclick="changeWeek(-1)" style="cursor: pointer;">◀</span>
+                <strong id="date-display">Week 11th Sep - 18th Sep</strong>
+                <span class="nav-arrow" onclick="changeWeek(1)" style="cursor: pointer;">▶</span>
+            </div>
+        </div>
+
+        <div class="chart-tabs">
+            <button class="chart-tab active" onclick="switchChartTab(this, 'weekly')">WEEKLY</button>
+            <button class="chart-tab" onclick="switchChartTab(this, 'monthly')">MONTHLY</button>
+            <button class="chart-tab" onclick="switchChartTab(this, 'yearly')">YEARLY</button>
+        </div>
+
+        <div class="chart-area">
+            <div class="bar-chart">
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 75%;" data-value="2.8h"></div>
+                    <div class="bar-value">2.8h</div>
+                    <div class="bar-label">MON</div>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 55%;" data-value="2.1h"></div>
+                    <div class="bar-value">2.1h</div>
+                    <div class="bar-label">TUE</div>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 85%;" data-value="3.2h"></div>
+                    <div class="bar-value">3.2h</div>
+                    <div class="bar-label">WED</div>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 45%;" data-value="1.7h"></div>
+                    <div class="bar-value">1.7h</div>
+                    <div class="bar-label">THU</div>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 65%;" data-value="2.5h"></div>
+                    <div class="bar-value">2.5h</div>
+                    <div class="bar-label">FRI</div>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 80%;" data-value="3.0h"></div>
+                    <div class="bar-value">3.0h</div>
+                    <div class="bar-label">SAT</div>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 70%;" data-value="3.2h"></div>
+                    <div class="bar-value">3.2h</div>
+                    <div class="bar-label">SUN</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Breakdown -->
+        <div class="activity-breakdown">
+            <h3 style="margin: 0 0 15px 0; color: var(--text-primary);">Activity Breakdown</h3>
+            <div class="activity-stats">
+                <div class="activity-stat-item">
+                    <div class="activity-stat-bar">
+                        <div class="activity-stat-fill" style="width: 45%; background: var(--color-blue);"></div>
+                    </div>
+                    <div class="activity-stat-info">
+                        <span class="activity-stat-name">Walking</span>
+                        <span class="activity-stat-value">8.3h (45%)</span>
+                    </div>
+                </div>
+                <div class="activity-stat-item">
+                    <div class="activity-stat-bar">
+                        <div class="activity-stat-fill" style="width: 28%; background: var(--color-green-status);">
+                        </div>
+                    </div>
+                    <div class="activity-stat-info">
+                        <span class="activity-stat-name">Jogging</span>
+                        <span class="activity-stat-value">5.2h (28%)</span>
+                    </div>
+                </div>
+                <div class="activity-stat-item">
+                    <div class="activity-stat-bar">
+                        <div class="activity-stat-fill" style="width: 15%; background: var(--color-orange);"></div>
+                    </div>
+                    <div class="activity-stat-info">
+                        <span class="activity-stat-name">Running</span>
+                        <span class="activity-stat-value">2.8h (15%)</span>
+                    </div>
+                </div>
+                <div class="activity-stat-item">
+                    <div class="activity-stat-bar">
+                        <div class="activity-stat-fill" style="width: 12%; background: var(--color-purple);"></div>
+                    </div>
+                    <div class="activity-stat-info">
+                        <span class="activity-stat-name">Stairs</span>
+                        <span class="activity-stat-value">2.2h (12%)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript functions -->
+<script>
+    function changeWeek(direction) {
+        // Update date display (simplified demo)
+        const dateEl = document.getElementById('date-display');
+        if (direction > 0) {
+            dateEl.textContent = 'Week 18th Sep - 25th Sep';
+        } else {
+            dateEl.textContent = 'Week 4th Sep - 11th Sep';
+        }
+        // In production, this would update the chart data
+    }
+
+    function switchChartTab(tabEl, period) {
+        document.querySelectorAll('.chart-tab').forEach(t => t.classList.remove('active'));
+        tabEl.classList.add('active');
+
+        // Update chart based on period (demo implementation)
+        const bars = document.querySelectorAll('.bar');
+        const values = document.querySelectorAll('.bar-value');
+        const labels = document.querySelectorAll('.bar-label');
+
+        if (period === 'monthly') {
+            // Show monthly data
+            const monthlyData = ['65%', '72%', '58%', '80%'];
+            const monthlyLabels = ['WK1', 'WK2', 'WK3', 'WK4'];
+            const monthlyValues = ['12.5h', '14.2h', '11.8h', '16.0h'];
+
+            bars.forEach((bar, i) => {
+                if (i < 4) {
+                    bar.style.height = monthlyData[i];
+                    bar.style.display = 'block';
+                    values[i].textContent = monthlyValues[i];
+                    labels[i].textContent = monthlyLabels[i];
+                } else {
+                    bar.style.display = 'none';
+                    values[i].style.display = 'none';
+                    labels[i].style.display = 'none';
+                }
+            });
+        } else if (period === 'yearly') {
+            // Show yearly data
+            const yearlyData = ['60%', '75%', '70%', '85%', '80%', '90%', '88%', '92%', '85%', '78%', '82%', '95%'];
+            const yearlyLabels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+            const yearlyValues = ['45h', '58h', '52h', '68h', '62h', '75h', '70h', '78h', '68h', '60h', '65h', '82h'];
+
+            bars.forEach((bar, i) => {
+                bar.style.height = yearlyData[i] || '0%';
+                bar.style.display = 'block';
+                values[i].textContent = yearlyValues[i] || '0h';
+                values[i].style.display = 'block';
+                labels[i].textContent = yearlyLabels[i] || '';
+                labels[i].style.display = 'block';
+            });
+        } else {
+            // Weekly (default)
+            const weeklyData = ['75%', '55%', '85%', '45%', '65%', '80%', '70%'];
+            const weeklyLabels = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+            const weeklyValues = ['2.8h', '2.1h', '3.2h', '1.7h', '2.5h', '3.0h', '3.2h'];
+
+            bars.forEach((bar, i) => {
+                bar.style.height = weeklyData[i];
+                bar.style.display = 'block';
+                values[i].textContent = weeklyValues[i];
+                values[i].style.display = 'block';
+                labels[i].textContent = weeklyLabels[i];
+                labels[i].style.display = 'block';
+            });
+        }
+    }
+</script>
