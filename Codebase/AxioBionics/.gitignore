@@ -1,0 +1,35 @@
+# C++ objects and libs
+*.slo
+*.lo
+*.o
+*.a
+*.la
+*.lai
+*.so
+*.so.*
+*.dll
+*.dylib
+
+# Qt
+*.qmlproject.user
+*.qmlproject.user.*
+CMakeLists.txt.user*
+compile_commands.json
+*creator.user*
+*_qmlcache.qrc
+
+# Ignore macOS junk
+**.DS_Store
+
+# Sensitive keys and certificates (do not version control)
+Keys/*.pem
+Keys/*.crt
+Keys/*.key
+Keys/*-private.pem.key
+Keys/*-certificate.pem.crt
+Keys/AmazonRootCA1.pem
+
+# Ignore all root markdown except README
+/*.md
+!README.md
+
